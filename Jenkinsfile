@@ -30,7 +30,7 @@ stage('ZAP Security Scan')
 	
 	
 	 
-  sh './a.sh'
+  sh './b.sh'
  }
 	
 	
@@ -41,7 +41,7 @@ stage('ZAP Security Scan')
       alwaysLinkToLastBuild: false,
       keepAll: true,
 	   reportDir: './',
-      reportFiles: 'localtest.html',
+      reportFiles: 'localtest1.html',
       reportName: "Security Scan Report"
     ])
  }
@@ -50,7 +50,7 @@ stage('ZAP Security Scan')
  {
 	
 
-	 value = readFile('foo.txt').trim()
+	 value = readFile('foo1.txt').trim()
   
 	
 echo value
