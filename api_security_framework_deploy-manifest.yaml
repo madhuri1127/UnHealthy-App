@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api_security_framework
+  labels:
+    app: api_security_framework
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api_security_framework
+  template:
+    metadata:
+      labels:
+        app: api_security_framework
+    spec:
+      containers:
+      - name: api_security_framework
+        stdin: true
+        tty: true
+        image: image-id
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api_security_framework
+  annotations:
+    avi_proxy: '{"virtualservice": { "vrf_context_ref": "/api/vrfcontext/vrfcontext-15cd4034-4ce9-4c14-9503-e4654c0965cd",
+      "se_group_ref": "/api/serviceenginegroup/serviceenginegroup-70cd92a0-35f0-4861-ae50-ca050864d3a6", 
+      "fqdn": "api_security_framework.eat1-k8s.vmware.com" },
+      "pool": { "vrf_ref": "/api/vrfcontext/vrfcontext-15cd4034-4ce9-4c14-9503-e4654c0965cd"}}'
+spec:
+  type: LoadBalancer
+  selector:
+    app: api_security_framework
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080

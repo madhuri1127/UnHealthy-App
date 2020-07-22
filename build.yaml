@@ -1,0 +1,8 @@
+BLUEPRINT:
+   APPLICATION: Kubernetes
+   OBJECT: K8s - Maven
+   SUB_OBJECT: Deploy Maven Build
+   NAMESPACE: kyc-customer-journey
+   APPLICATION_POD: api_security-ui
+
+
