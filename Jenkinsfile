@@ -30,7 +30,7 @@ stage('ZAP Security Scan')
 	
 	
 	 
-  sh './b.sh'
+  sh './a.sh'
  }
 	
 	
@@ -41,7 +41,7 @@ stage('ZAP Security Scan')
       alwaysLinkToLastBuild: false,
       keepAll: true,
 	   reportDir: './',
-      reportFiles: 'localtest1.html',
+      reportFiles: 'localtest.html',
       reportName: "Security Scan Report"
     ])
  }
