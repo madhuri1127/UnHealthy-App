@@ -27,7 +27,7 @@ stage('Test Code Coverage')
       keepAll: true,
 	   reportDir: './',
       reportFiles: 'index.html',
-      reportName: "Security Scan Report"
+      reportName: "Code Coverage Report"
     ])
  
 }
