@@ -21,7 +21,14 @@ if(true)
 stage('Test Code Coverage')
 {
 	
-sh "mvn test"
+ publishHTML (target: [
+      allowMissing: false,
+      alwaysLinkToLastBuild: false,
+      keepAll: true,
+	   reportDir: './',
+      reportFiles: 'index.html',
+      reportName: "Security Scan Report"
+    ])
  
 }
  
